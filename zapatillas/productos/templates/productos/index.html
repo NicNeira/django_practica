@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Zapatillas</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block title %}Listado de Zapatillas{% endblock %}
+
+    {% block content %}
+    <h1>Listado de Zapatillas</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Modelo</th>
+          <th scope="col">Color</th>
+          <th scope="col">Talla Mínima</th>
+          <th scope="col">Talla Máxima</th>
+          <th scope="col">Marca</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">País de Origen</th>
+          <th scope="col">Condición del Producto</th>
+          <th scope="col">Disciplina</th>
+          <th scope="col">Material del Forro</th>
+          <th scope="col">Género</th>
+          <th scope="col">Material Principal</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for zapatilla in productos %}
+        <tr>
+          <td>{{ zapatilla.modelo }}</td>
+          <td>{{ zapatilla.color }}</td>
+          <td>{{ zapatilla.talla_minima }}</td>
+          <td>{{ zapatilla.talla_maxima }}</td>
+          <td>{{ zapatilla.marca }}</td>
+          <td>{{ zapatilla.precio }}</td>
+          <td>{{ zapatilla.descripcion }}</td>
+          <td>{{ zapatilla.pais_de_origen }}</td>
+          <td>{{ zapatilla.condicion }}</td>
+          <td>{{ zapatilla.disciplina }}</td>
+          <td>{{ zapatilla.material_del_forro }}</td>
+          <td>{{ zapatilla.genero }}</td>
+          <td>{{ zapatilla.material_principal }}</td>
+          <td>{{ zapatilla.id }}</td>
+          <td>
+              <a href="{% url 'editar_producto' id=zapatilla.id %}">Editar Producto</a>
+              <a href="{% url 'eliminar_producto' pk=zapatilla.id %}" class="btn btn-danger">Eliminar</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="{% url 'agregar_producto' %}" class="btn btn-success">Agregar Producto</a>
+    {% endblock %}
+</body>
+</html>

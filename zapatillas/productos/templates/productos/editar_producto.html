@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+{% block content %}
+<div class="container">
+    <h1>Editar Producto</h1>
+    <form action="{% url 'editar_producto' id=producto.id %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="producto_id">ID del Producto a Editar:</label>
+            <input type="number" class="form-control" id="producto_id" name="producto_id" value="{{ producto.id }}" required>
+        </div>
+        <div class="form-group">
+            <label for="modelo">Modelo:</label>
+            <input type="text" class="form-control" id="modelo" name="modelo" value="{{ producto.modelo }}" required>
+        </div>
+        <div class="form-group">
+            <label for="color">Color:</label>
+            <input type="text" class="form-control" id="color" name="color" value="{{ producto.color }}" required>
+        </div>
+        <div class="form-group">
+            <label for="talla_minima">talla_minima:</label>
+            <input type="text" class="form-control" id="talla_minima" name="talla_minima" value="{{ producto.talla_minima }}" required>
+        </div>
+        <div class="form-group">
+            <label for="talla_maxima">talla_maxima:</label>
+            <input type="text" class="form-control" id="talla_maxima" name="talla_maxima" value="{{ producto.talla_maxima }}" required>
+        </div>
+        <div class="form-group">
+            <label for="marca">marca:</label>
+            <input type="text" class="form-control" id="marca" name="marca" value="{{ producto.marca }}" required>
+        </div>
+        <div class="form-group">
+            <label for="precio">precio:</label>
+            <input type="text" class="form-control" id="precio" name="precio" value="{{ producto.precio }}" required>
+        </div>
+        <div class="form-group">
+            <label for="descripcion">descripcion:</label>
+            <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ producto.descripcion }}" required>
+        </div>
+        <div class="form-group">
+            <label for="pais_de_origen">pais_de_origen:</label>
+            <input type="text" class="form-control" id="pais_de_origen" name="pais_de_origen" value="{{ producto.pais_de_origen }}" >
+        </div>
+        <div class="form-group">
+            <label for="condicion">condicion:</label>
+            <input type="text" class="form-control" id="condicion" name="condicion" value="{{ producto.condicion }}" required>
+        </div>
+        <div class="form-group">
+            <label for="disciplina">disciplina:</label>
+            <input type="text" class="form-control" id="disciplina" name="disciplina" value="{{ producto.disciplina }}" required>
+        </div>
+        <div class="form-group">
+            <label for="material_del_forro">material_del_forro:</label>
+            <input type="text" class="form-control" id="material_del_forro" name="material_del_forro" value="{{ producto.material_del_forro }}" required>
+        </div>
+        <div class="form-group">
+            <label for="genero">genero:</label>
+            <input type="text" class="form-control" id="genero" name="genero" value="{{ producto.genero }}" required>
+        </div>
+        <div class="form-group">
+            <label for="material_principal">material_principal:</label>
+            <input type="text" class="form-control" id="material_principal" name="material_principal" value="{{ producto.material_principal }}" required>
+        </div>
+        <!-- Agrega más campos para los atributos que deseas editar -->
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
+</div>
+{% endblock %}
+    
+</body>
+</html>

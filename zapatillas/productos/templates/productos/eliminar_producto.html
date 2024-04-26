@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Zapatilla</title>
+</head>
+<body>
+    <h1>Eliminar Zapatilla</h1>
+    <ul>
+        {% for zapatilla in Zapatillas %}
+            <li>{{ zapatilla.modelo }} - {{ zapatilla.marca }} - {{ zapatilla.color }} <a href="{% url 'eliminar_producto' zapatilla.modelo %}">Eliminar</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

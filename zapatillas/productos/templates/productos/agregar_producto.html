@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Zapatilla</title>
+</head>
+<body>
+    <h1>Agregar Zapatilla</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="opcion" value="Agregar">
+        <label for="modelo">Modelo:</label><br>
+        <input type="text" id="modelo" name="modelo"><br>
+        <label for="color">Color:</label><br>
+        <input type="text" id="color" name="color"><br>
+        <label for="talla_minima">Talla mínima:</label><br>
+        <input type="text" id="talla_minima" name="talla_minima"><br>
+        <label for="talla_maxima">Talla máxima:</label><br>
+        <input type="text" id="talla_maxima" name="talla_maxima"><br>
+        <label for="marca">Marca:</label><br>
+        <input type="text" id="marca" name="marca"><br>
+        <label for="precio">Precio:</label><br>
+        <input type="text" id="precio" name="precio"><br>
+        <label for="descripcion">Descripción:</label><br>
+        <textarea id="descripcion" name="descripcion"></textarea><br>
+        <label for="pais_de_origen">pais_de_origen:</label><br>
+        <input type="text" id="pais_de_origen" name="pais_de_origen"><br>
+        <label for="condicion">condicion:</label><br>
+        <input type="text" id="condicion" name="condicion"><br>
+        <label for="disciplina">disciplina:</label><br>
+        <input type="text" id="disciplina" name="disciplina"><br>
+        <label for="material_del_forro">material_del_forro:</label><br>
+        <input type="text" id="material_del_forro" name="material_del_forro"><br>
+        <label for="genero">genero:</label><br>
+        <input type="text" id="genero" name="genero"><br>
+        <label for="material_principal">material_principal:</label><br>
+        <input type="text" id="material_principal" name="material_principal"><br>
+        <input type="submit" value="Agregar">
+        <!-- pais_de_origen
+            condicion
+            disciplina
+            material_del_forro
+            genero
+            material_principal 
+        -->
+    </form>
+    {% if mensaje %}
+        <p>{{ mensaje }}</p>
+    {% endif %}
+</body>
+</html>
+
