@@ -13,43 +13,42 @@ class Usuario:
         return self.username == username and self.password == password
 
 
-usuarios_predefinidos = [
-    Usuario('maria@a.com', 'u1'),
-    Usuario('juan@b.com', 'u2'),
-    Usuario('jose@c.com', 'u3'),
-    Usuario('nico@d.com', 'u4'),
-    Usuario('isabel@e.com', 'u5'),
-    Usuario('isis@f.com', 'u6'),
-    Usuario('mary@g.com', 'u7'),
-    Usuario('ali@h.com', 'u8'),
-    Usuario('angel@i.com', 'u9'),
-    Usuario('andy@j.com', 'u10'),
-]
+# usuarios_predefinidos = [
+#     Usuario('maria@a.com', 'u1'),
+#     Usuario('juan@b.com', 'u2'),
+#     Usuario('jose@c.com', 'u3'),
+#     Usuario('nico@d.com', 'u4'),
+#     Usuario('isabel@e.com', 'u5'),
+#     Usuario('isis@f.com', 'u6'),
+#     Usuario('mary@g.com', 'u7'),
+#     Usuario('ali@h.com', 'u8'),
+#     Usuario('angel@i.com', 'u9'),
+#     Usuario('andy@j.com', 'u10'),
+# ]
 
-def authenticate_user(username, password):
-    for usuario in usuarios_predefinidos:
-        if usuario.check_credentials(username, password):
-            return True
-    return False
+# def authenticate_user(username, password):
+#     for usuario in usuarios_predefinidos:
+#         if usuario.check_credentials(username, password):
+#             return True
+#     return False
 
 def user_login(request):
     if request.method == 'POST':
-        username = request.POST.get('user')
+        username = request.POST.get('username')
         password = request.POST.get('password')
         
-        if authenticate_user(username, password):
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('index')  
+        # Utiliza la función authenticate de Django para verificar las credenciales
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            # Si las credenciales son correctas, inicia sesión con el usuario
+            login(request, user)
+            return redirect('index')
         else:
-            return render(request, 'error.html')  
+            # Si las credenciales son incorrectas, muestra una página de error
+            return render(request, 'error.html', {'message': 'Invalid login details'})
     
-    return render(request, 'login.html')  
-
-
-
-
+    return render(request, 'login.html')
 
 
 from django.shortcuts import render, redirect
